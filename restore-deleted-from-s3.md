@@ -3,6 +3,7 @@ title: Restoring Deleted Files from a Versioning-Enabled S3 Bucket
 subtitle: Here's a comprehensive guide on how to restore deleted files from a
   versioning-enabled S3 bucket.
 ---
+###  Restoring Deleted Files from a Versioning-Enabled S3 Bucket
 Amazon S3 is a widely used object storage service that provides versioning capabilities to protect against accidental deletions and overwrites. When versioning is enabled, each object in the bucket is given a unique version ID, and delete markers are used to indicate deleted objects. This guide will walk you through the process of restoring deleted files in a versioning-enabled S3 bucket.
 
 **Prerequisites**
