@@ -44,61 +44,29 @@ Restoring deleted objects involves removing the delete markers. This action make
 
 To restore all deleted files by removing the delete markers, you can use the following script:
 
-> ```
->    aws s3api list-object-versions --bucket your-bucket-name --query "DeleteMarkers[?IsLatest==\`true\`].[Key, VersionId]" --output text | while read key version_id
-> ```
-> 
-> ```
->    do
-> ```
-> 
-> ```
->        aws s3api delete-object --bucket your-bucket-name --key "$key" --version-id "$version_id"
-> ```
-> 
-> ```
->        echo "Restored $key with version $version_id"
-> ```
-> 
-> ```
->    done
-> ```
+```
+aws s3api list-object-versions --bucket your-bucket-name --query "DeleteMarkers[?IsLatest==\`true\`].[Key, VersionId]" --output text | while read key version_id
+do
+    aws s3api delete-object --bucket your-bucket-name --key "$key" --version-id "$version_id"
+    echo "Restored $key with version $version_id"
+done
+```
 
 ### Full Script to Restore All Deleted Files
 
 Here’s a complete bash script that lists all delete markers and removes them to restore the deleted files:
 
-> ```
-> #!/bin/bash
-> ```
-> 
-> ```
-> BUCKET_NAME="your-bucket-name"
-> ```
-> 
-> ```
-> # List delete markers and delete them to restore deleted files
-> ```
-> 
-> ```
-> aws s3api list-object-versions --bucket "$BUCKET_NAME" --query "DeleteMarkers[?IsLatest==\`true\`].[Key, VersionId]" --output text | while read key version_id
-> ```
-> 
-> ```
-> do
-> ```
-> 
-> ```
->     aws s3api delete-object --bucket "$BUCKET_NAME" --key "$key" --version-id "$version_id"
-> ```
-> 
-> ```
->     echo "Restored $key with version $version_id"
-> ```
-> 
-> ```
-> done
-> ```
+```#!/bin/bash
+
+BUCKET_NAME="your-bucket-name"
+
+# List delete markers and delete them to restore deleted files
+aws s3api list-object-versions --bucket "$BUCKET_NAME" --query "DeleteMarkers[?IsLatest==\`true\`].[Key, VersionId]" --output text | while read key version_id
+do
+    aws s3api delete-object --bucket "$BUCKET_NAME" --key "$key" --version-id "$version_id"
+    echo "Restored $key with version $version_id"
+done
+```
 
 ### Step 3: Verify Restoration
 
