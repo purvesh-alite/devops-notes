@@ -28,6 +28,7 @@ server {
 }
 EOL
 
+cat /etc/nginx/sites-enabled/*
 figlet "Nginx"
 sudo nginx -t
 sudo systemctl restart nginx
