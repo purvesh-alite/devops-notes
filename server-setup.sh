@@ -8,10 +8,13 @@ DOMAIN=$1 # Accept the domain name as the first argument
 sudo apt-get update
 sudo apt-get install -y nginx curl gnupg docker.io figlet
 
+figlet "Docker"
 # Setup Docker permissions
 sudo usermod -aG docker ${USER}
 sudo chmod 666 /var/run/docker.sock
 
+echo "----------- $DOMAIN ------------"
+echo $DOMAIN
 # Configure Nginx
 sudo tee /etc/nginx/sites-enabled/$DOMAIN > /dev/null <<EOL
 server {
