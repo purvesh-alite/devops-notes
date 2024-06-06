@@ -13,7 +13,7 @@ sudo usermod -aG docker ${USER}
 sudo chmod 666 /var/run/docker.sock
 
 # Configure Nginx
-sudo tee /etc/nginx/sites-available/default > /dev/null <<EOL
+sudo tee /etc/nginx/sites-enabled/$DOMAIN > /dev/null <<EOL
 server {
     listen 80;
     server_name $DOMAIN;
