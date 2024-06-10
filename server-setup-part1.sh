@@ -36,6 +36,6 @@ figlet "Nginx"
 sudo nginx -t
 sudo systemctl restart nginx
 
-figlet "-----------  Setup Part 1 Complete ------------"
+figlet "Setup Part 1 Complete"
 echo "Please update your DNS records to point to the public IP address of the instance."
 echo `curl -s 2ip.io`
