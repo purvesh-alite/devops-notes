@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # MongoDB admin user credentials
-ADMIN_USER="thor"
-ADMIN_PASS="password"
+ADMIN_USER="admin"
+ADMIN_PASS="p4ssw0rd"
 
 # Log file for script output
 LOG_FILE="logs-of-script.txt"
