@@ -16,7 +16,7 @@ docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}
 
 # Pull and run the application container
 docker pull purveshpanchal/tf-meteor:jenkins 
-docker run --name tf-meteor -dp 3000:3000 purveshpanchal/tf-meteor:jenkins
+docker run --name tf-meteor -dp 3000:3000 -e MONGO_HOST=`hostname -I | awk '{print $1}'` purveshpanchal/tf-meteor:v4
 
 figlet "Deployed Successfully!"
 echo "-----> $DOMAIN"
