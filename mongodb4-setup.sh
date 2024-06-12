@@ -161,6 +161,8 @@ fi
 # Step 5: Restart MongoDB service with authentication enabled
 echo "Restarting MongoDB service with authentication..." | tee -a $LOG_FILE
 sudo chown -R mongodb:mongodb /var/log/mongodb/
+sudo chown -R mongodb:mongodb /var/lib/mongodb/
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
 sudo systemctl restart mongod
 if [ $? -ne 0 ]; then
     echo "Error restarting MongoDB service. Check the log at $LOG_DIR/mongod.log for details. Continuing script." | tee -a $LOG_FILE
