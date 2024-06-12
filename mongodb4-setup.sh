@@ -44,8 +44,6 @@ sudo systemctl start mongod
 # Enable MongoDB to start on boot
 sudo systemctl enable mongod
 
-# Check MongoDB status
-sudo systemctl status mongod
 
 figlet "MongoDB 4.4 installation completed successfully."
 
