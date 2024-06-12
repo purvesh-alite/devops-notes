@@ -93,6 +93,13 @@ if [ $? -ne 0 ]; then
     echo "Error creating admin user. Continuing script. Check the logs for details." | tee -a $LOG_FILE
 fi
 
+# Step 2.5: Create user
+echo "Creating database..." | tee -a $LOG_FILE
+mongo --eval "db.getSiblingDB('wp').createUser({user: 'user', pwd: 'password', roles: [{ role: 'readWrite', db: 'wp' }]})" -u $ADMIN_USER -p $ADMIN_PASS
+
+mongo --eval "db.getSiblingDB('wp').createCollection('test')" -u $ADMIN_USER -p $ADMIN_PASS
+
+
 # Step 3: Stop MongoDB
 echo "Stopping MongoDB..." | tee -a $LOG_FILE
 mongod --shutdown
