@@ -6,7 +6,7 @@ DOMAIN=$1 # Accept the domain name as the first argument
 
 # Install Certbot and configure SSL
 sudo apt-get install -y certbot python3-certbot-nginx
-sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos -m user@domain.com
+sudo certbot --nginx -d $DOMAIN --non-interactive --agree-tos -m purvesh@aliteprojects.in
 
 figlet "Nginx Setup Complete"
 export DOCKER_HUB_USERNAME=purveshpanchal
