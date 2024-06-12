@@ -160,9 +160,10 @@ fi
 
 # Step 5: Restart MongoDB service with authentication enabled
 echo "Restarting MongoDB service with authentication..." | tee -a $LOG_FILE
+sudo chown -R mongodb:mongodb /var/log/mongodb/
 sudo systemctl restart mongod
 if [ $? -ne 0 ]; then
     echo "Error restarting MongoDB service. Check the log at $LOG_DIR/mongod.log for details. Continuing script." | tee -a $LOG_FILE
 fi
-sudo service mongod status
+sudo chown -R mongodb:mongodb /var/log/mongodb/
 figlet "MongoDB Setup completed successfully." | tee -a $LOG_FILE
